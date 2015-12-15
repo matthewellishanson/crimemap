@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+
+<style>
+
+body {
+    font-size: 100%;
+}
+
+h2 {
+    font-size: 5em;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+
+h3 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h4 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+p.bignumber {
+    font-size: 2em;
+    text-align: center;
+}
+
+li.listicle {
+    font-size: 2em;
+    text-align: center;
+}
+    
+    
+
+</style>
+
+{% endblock %}
+
+{% block content %} 
+
+<h2>5 Years of Crime at UNL</h2>
+
+<div class="row">
+        <div class="col-xs-6 col-lg-4"><h3>Most Expensive Crime</h3>
+{% for object in maxtheft %}<p class="bignumber"><a href="{{ object.get_absolute_url }}">{{ object.incidentcode|title }}</a>: ${{ object.stolen__max|floatformat }}</p>{% endfor %}</div>
+
+        <div class="col-xs-6 col-lg-4"><h3>5 Most Commonly Reported Crimes at UNL</h3>
+<ul>{% for object in topcrime %}
+<li class="listicle">{{ object.name|title }}: {{ object.num_incidentcodes }}</li>{% endfor %}
+</ul></div>
+<div class="col-xs-6 col-lg-4"><h3>5 Most Common Buildings</h3>
+<ul>{% for object in topbuilding %}
+<li class="listicle">{{ object.name }}: {{ object.num_buildings }}</li>{% endfor %}
+</ul></div>
+ </div>
+
+<script id="infogram_0_unlpd_crime_data" title="UNLPD Crime Data" src="//e.infogr.am/js/embed.js?HxD" type="text/javascript"></script><div style="width:100%;padding:8px 0;font-family:Arial;font-size:13px;line-height:15px;text-align:center;"><a target="_blank" href="https://infogr.am/unlpd_crime_data" style="color:#989898;text-decoration:none;">UNLPD Crime Data</a><br><a style="color:#989898;text-decoration:none;" href="https://infogr.am" target="_blank">Create your own infographics</a></div>
+
+{% endblock %}

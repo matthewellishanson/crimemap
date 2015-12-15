@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+
+<style>
+
+body {
+    font-size: 100%;
+}
+
+h3 {
+    font-size: 2.25em;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<h3>Crime</h3> 
+<p>{{ incident.incidentcode }}</p> 
+
+<h3>Date Reported<h3> 
+<p>{{ incident.reported }}</p>
+
+<h3>UNLPD Description</h3> 
+<p>{{ incident.description }}</p>
+
+<h3>Status</h3>
+<p>{{ incident.status }}</p>
+
+{% endblock %}
+
